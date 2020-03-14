@@ -4,17 +4,16 @@ import java.math.BigInteger;
 import java.util.Map;
 
 import com.google.common.math.BigIntegerMath;
-import factorial.FactorialCalculator;
 
-public class GuavaFactorialCalculator implements FactorialCalculator<BigInteger> {
+public class GuavaFactorialCalculator extends BasicFactorialCalculator<BigInteger> {
+
     @Override
-    public BigInteger factorial(int n) {
+    protected BigInteger calculate(Map.Entry<Integer, BigInteger> entry, int n) {
         return BigIntegerMath.factorial(n);
     }
 
     @Override
-    public BigInteger factorial(Map.Entry<Integer, BigInteger> entry, int n) {
-        // Unfortunately nothing can be reused here.
-        return factorial(n);
+    protected BigInteger identity() {
+        return BigInteger.ONE;
     }
 }

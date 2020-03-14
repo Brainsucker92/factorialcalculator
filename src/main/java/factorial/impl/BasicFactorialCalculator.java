@@ -8,7 +8,6 @@ import factorial.FactorialCalculator;
 public abstract class BasicFactorialCalculator<T extends Number> implements FactorialCalculator<T> {
     @Override
     public T factorial(int n) {
-
         Map.Entry<Integer, T> entry = new AbstractMap.SimpleEntry<>(1, identity());
         return factorial(entry, n);
     }
