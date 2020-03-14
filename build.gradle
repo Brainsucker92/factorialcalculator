@@ -1,5 +1,6 @@
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'maven-publish'
 }
 
 group 'com.github.brainsucker92'
@@ -9,6 +10,7 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 test {
@@ -20,4 +22,42 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.google.guava/guava
     implementation group: 'com.google.guava', name: 'guava', version: '28.2-jre'
+}
+
+jar {
+    manifest {
+        attributes('Implementation-Title': project.name,
+                'Implementation-Version': project.version)
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = "$group"
+            artifactId = "$project.name"
+            version = "$version"
+
+            from components.java
+
+            pom {
+                name = 'Factorial Calculator'
+                description = 'Provides multiple implementations for the factorial function'
+
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'Brainsucker92'
+                        name = 'Stefan S.'
+                        email = 'stscit21@hs-esslingen.de'
+                    }
+                }
+            }
+        }
+    }
 }
