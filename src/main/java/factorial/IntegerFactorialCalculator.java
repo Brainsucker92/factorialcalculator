@@ -1,4 +1,4 @@
-package factorial.impl;
+package factorial;
 
 public abstract class IntegerFactorialCalculator extends BasicFactorialCalculator<Integer> {
     @Override

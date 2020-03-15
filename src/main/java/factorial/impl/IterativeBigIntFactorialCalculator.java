@@ -4,6 +4,8 @@ import java.math.BigInteger;
 import java.util.Map;
 import java.util.stream.IntStream;
 
+import factorial.BigIntegerFactorialCalculator;
+
 public class IterativeBigIntFactorialCalculator extends BigIntegerFactorialCalculator {
 
     @Override

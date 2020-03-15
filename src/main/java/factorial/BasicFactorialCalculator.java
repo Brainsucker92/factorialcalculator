@@ -1,9 +1,7 @@
-package factorial.impl;
+package factorial;
 
 import java.util.AbstractMap;
 import java.util.Map;
-
-import factorial.FactorialCalculator;
 
 public abstract class BasicFactorialCalculator<T extends Number> implements FactorialCalculator<T> {
     @Override

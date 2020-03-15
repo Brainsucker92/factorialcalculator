@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.util.Map;
 
 import com.google.common.math.BigIntegerMath;
+import factorial.BigIntegerFactorialCalculator;
 
 public class GuavaFactorialCalculator extends BigIntegerFactorialCalculator {
 

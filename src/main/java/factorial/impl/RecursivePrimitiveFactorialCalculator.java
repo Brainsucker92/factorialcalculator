@@ -2,6 +2,8 @@ package factorial.impl;
 
 import java.util.Map;
 
+import factorial.LongFactorialCalculator;
+
 public class RecursivePrimitiveFactorialCalculator extends LongFactorialCalculator {
 
     @Override

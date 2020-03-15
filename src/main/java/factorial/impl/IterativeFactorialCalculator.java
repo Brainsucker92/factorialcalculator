@@ -3,6 +3,8 @@ package factorial.impl;
 import java.util.Map;
 import java.util.stream.LongStream;
 
+import factorial.LongFactorialCalculator;
+
 public class IterativeFactorialCalculator extends LongFactorialCalculator {
 
     @Override

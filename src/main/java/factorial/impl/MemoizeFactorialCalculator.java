@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
 
+import factorial.BasicFactorialCalculator;
 import factorial.FactorialCalculator;
 
 public class MemoizeFactorialCalculator<T extends Number> extends BasicFactorialCalculator<T> {

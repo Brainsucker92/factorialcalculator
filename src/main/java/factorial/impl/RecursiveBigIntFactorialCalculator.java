@@ -3,6 +3,8 @@ package factorial.impl;
 import java.math.BigInteger;
 import java.util.Map;
 
+import factorial.BigIntegerFactorialCalculator;
+
 public class RecursiveBigIntFactorialCalculator extends BigIntegerFactorialCalculator {
 
     @Override

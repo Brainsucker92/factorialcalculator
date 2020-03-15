@@ -1,4 +1,4 @@
-package factorial.impl;
+package factorial;
 
 import java.math.BigInteger;
 
