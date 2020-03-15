@@ -9,11 +9,6 @@ public class RecursiveBigIntFactorialCalculator extends BigIntegerFactorialCalcu
 
     @Override
     public BigInteger calculate(Map.Entry<Integer, BigInteger> entry, int n) {
-        Integer key = entry.getKey();
-        BigInteger value = entry.getValue();
-        if (n - key > 0) {
-            return BigInteger.valueOf(n).multiply(factorial(entry, n - 1));
-        }
-        return value;
+        return BigInteger.valueOf(n).multiply(factorial(entry, n - 1));
     }
 }

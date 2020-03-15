@@ -14,6 +14,8 @@ public abstract class BasicFactorialCalculator<T extends Number> implements Fact
     public T factorial(Map.Entry<Integer, T> entry, int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Cannot calculate factorial of negative numbers.");
+        } else if (n == entry.getKey()) {
+            return entry.getValue();
         } else if (n >= 2) {
             return calculate(entry, n);
         }
