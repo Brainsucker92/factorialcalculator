@@ -9,7 +9,11 @@ public class RecursivePrimitiveFactorialCalculator extends BasicFactorialCalcula
         Integer key = entry.getKey();
         Long value = entry.getValue();
         if (n - key > 0) {
-            return n * factorial(entry, n - 1);
+            long fac = factorial(entry, n - 1);
+            if ((Long.MAX_VALUE / n) < fac) {
+                throw new ArithmeticException("Overflow detected for n=" + n);
+            }
+            return n * fac;
         }
         return value;
     }

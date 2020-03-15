@@ -16,6 +16,11 @@ public class IterativeFactorialCalculator extends BasicFactorialCalculator<Long>
         Long value = entry.getValue();
 
         return value * LongStream.rangeClosed(key + 1, n)
-                                 .reduce(identity(), (i1, i2) -> i1 * i2);
+                                 .reduce(identity(), (i1, i2) -> {
+                                     if ((Long.MAX_VALUE / i1) < i2) {
+                                         throw new ArithmeticException("Overflow detected");
+                                     }
+                                     return i1 * i2;
+                                 });
     }
 }
