@@ -1,21 +1,21 @@
 package factorial.impl;
 
 import java.util.Map;
-import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
-public class IterativeFactorialCalculator extends BasicFactorialCalculator<Integer> {
+public class IterativeFactorialCalculator extends BasicFactorialCalculator<Long> {
 
     @Override
-    protected Integer identity() {
-        return 1;
+    protected Long identity() {
+        return 1L;
     }
 
     @Override
-    public Integer calculate(Map.Entry<Integer, Integer> entry, int n) {
+    public Long calculate(Map.Entry<Integer, Long> entry, int n) {
         Integer key = entry.getKey();
-        Integer value = entry.getValue();
+        Long value = entry.getValue();
 
-        return value * IntStream.rangeClosed(key + 1, n)
-                                .reduce(identity(), (i1, i2) -> i1 * i2);
+        return value * LongStream.rangeClosed(key + 1, n)
+                                 .reduce(identity(), (i1, i2) -> i1 * i2);
     }
 }

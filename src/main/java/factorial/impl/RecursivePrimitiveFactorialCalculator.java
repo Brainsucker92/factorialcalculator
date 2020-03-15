@@ -2,21 +2,20 @@ package factorial.impl;
 
 import java.util.Map;
 
-public class RecursivePrimitiveFactorialCalculator extends BasicFactorialCalculator<Integer> {
+public class RecursivePrimitiveFactorialCalculator extends BasicFactorialCalculator<Long> {
 
     @Override
-    public Integer calculate(Map.Entry<Integer, Integer> entry, int n) {
+    public Long calculate(Map.Entry<Integer, Long> entry, int n) {
         Integer key = entry.getKey();
-        Integer value = entry.getValue();
+        Long value = entry.getValue();
         if (n - key > 0) {
-            long result = (long) n * (long) factorial(entry,n - 1);
-            return Math.toIntExact(result);
+            return n * factorial(entry, n - 1);
         }
         return value;
     }
 
     @Override
-    protected Integer identity() {
-        return 1;
+    protected Long identity() {
+        return 1L;
     }
 }
