@@ -3,12 +3,7 @@ package factorial.impl;
 import java.math.BigInteger;
 import java.util.Map;
 
-public class RecursiveBigIntFactorialCalculator extends BasicFactorialCalculator<BigInteger> {
-
-    @Override
-    protected BigInteger identity() {
-        return BigInteger.ONE;
-    }
+public class RecursiveBigIntFactorialCalculator extends BigIntegerFactorialCalculator {
 
     @Override
     public BigInteger calculate(Map.Entry<Integer, BigInteger> entry, int n) {

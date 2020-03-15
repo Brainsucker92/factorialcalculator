@@ -2,7 +2,7 @@ package factorial.impl;
 
 import java.util.Map;
 
-public class RecursivePrimitiveFactorialCalculator extends BasicFactorialCalculator<Long> {
+public class RecursivePrimitiveFactorialCalculator extends LongFactorialCalculator {
 
     @Override
     public Long calculate(Map.Entry<Integer, Long> entry, int n) {
@@ -16,10 +16,5 @@ public class RecursivePrimitiveFactorialCalculator extends BasicFactorialCalcula
             return n * fac;
         }
         return value;
-    }
-
-    @Override
-    protected Long identity() {
-        return 1L;
     }
 }
