@@ -11,11 +11,12 @@ public class IterativeFactorialCalculator extends LongFactorialCalculator {
     protected Long calculate(Map.Entry<Integer, Long> entry, int n) {
         Integer key = entry.getKey();
         Long value = entry.getValue();
-        return value * LongStream.rangeClosed(key + 1, n)
-                                 .reduce(identity(), (x, y) -> {
-                                     Long next = x * y;
-                                     checkOverflow(next, n + 1);
-                                     return next;
-                                 });
+        Long prevResult = LongStream.rangeClosed(key + 1, n)
+                                    .reduce(identity(), (x, y) -> {
+                                        checkOverflow(x, ((int) y));
+                                        return x * y;
+                                    });
+        checkOverflow(prevResult, key);
+        return value * prevResult;
     }
 }
