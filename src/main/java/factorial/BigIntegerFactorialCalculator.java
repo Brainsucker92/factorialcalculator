@@ -7,4 +7,8 @@ public abstract class BigIntegerFactorialCalculator extends BasicFactorialCalcul
     protected BigInteger identity() {
         return BigInteger.ONE;
     }
+
+    protected final BigInteger getOverflowLimit() {
+        return null;
+    }
 }

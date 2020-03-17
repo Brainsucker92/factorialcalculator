@@ -4,10 +4,9 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
 
-import factorial.BasicFactorialCalculator;
 import factorial.FactorialCalculator;
 
-public class MemoizeFactorialCalculator<T extends Number> extends BasicFactorialCalculator<T> {
+public class MemoizeFactorialCalculator<T extends Number> implements FactorialCalculator<T> {
 
     private FactorialCalculator<T> calculator;
 
@@ -18,7 +17,12 @@ public class MemoizeFactorialCalculator<T extends Number> extends BasicFactorial
     }
 
     @Override
-    public T calculate(Map.Entry<Integer, T> entry, int n) {
+    public T factorial(int n) {
+        return calculator.factorial(n);
+    }
+
+    @Override
+    public T factorial(Map.Entry<Integer, T> entry, int n) {
         if (factorialBuffer.containsKey(n)) {
             // Result is already known
             return factorialBuffer.get(n);
@@ -28,8 +32,9 @@ public class MemoizeFactorialCalculator<T extends Number> extends BasicFactorial
         Map.Entry<Integer, T> floorEntry = factorialBuffer.floorEntry(n);
         if (floorEntry == null) {
             // factorialBuffer is empty
-            T identity = identity();
-            factorialBuffer.put(1, identity);
+            int i = 1;
+            T identity = calculator.factorial(i);
+            factorialBuffer.put(i, identity);
         }
         Integer externalKey = entry.getKey();
 
@@ -53,10 +58,5 @@ public class MemoizeFactorialCalculator<T extends Number> extends BasicFactorial
         } while (closestEntry.getKey() < n);
 
         return factorialBuffer.get(n);
-    }
-
-    @Override
-    protected T identity() {
-        return calculator.factorial(1);
     }
 }
