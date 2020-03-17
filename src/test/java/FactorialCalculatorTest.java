@@ -3,7 +3,7 @@ import java.util.stream.Stream;
 import factorial.FactorialCalculator;
 import factorial.impl.GuavaFactorialCalculator;
 import factorial.impl.IterativeBigIntFactorialCalculator;
-import factorial.impl.IterativeFactorialCalculator;
+import factorial.impl.IterativeLongFactorialCalculator;
 import factorial.impl.MemoizeFactorialCalculator;
 import factorial.impl.RecursiveBigIntFactorialCalculator;
 import factorial.impl.RecursivePrimitiveFactorialCalculator;
@@ -22,8 +22,8 @@ public class FactorialCalculatorTest {
     public static Stream<Arguments> provideArguments() {
         return Stream.of(Arguments.of(new GuavaFactorialCalculator()),
                 Arguments.of(new IterativeBigIntFactorialCalculator()),
-                Arguments.of(new IterativeFactorialCalculator()),
-                Arguments.of(new IterativeFactorialCalculator()),
+                Arguments.of(new IterativeLongFactorialCalculator()),
+                Arguments.of(new IterativeLongFactorialCalculator()),
                 Arguments.of(new RecursiveBigIntFactorialCalculator()),
                 Arguments.of(new RecursivePrimitiveFactorialCalculator()),
                 Arguments.of(new MemoizeFactorialCalculator<>(new RecursivePrimitiveFactorialCalculator())));

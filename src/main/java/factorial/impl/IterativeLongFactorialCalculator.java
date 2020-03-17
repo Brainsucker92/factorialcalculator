@@ -5,7 +5,7 @@ import java.util.stream.LongStream;
 
 import factorial.LongFactorialCalculator;
 
-public class IterativeFactorialCalculator extends LongFactorialCalculator {
+public class IterativeLongFactorialCalculator extends LongFactorialCalculator {
 
     @Override
     protected Long calculate(Map.Entry<Integer, Long> entry, int n) {
