@@ -23,7 +23,6 @@ public class FactorialCalculatorTest {
         return Stream.of(Arguments.of(new GuavaFactorialCalculator()),
                 Arguments.of(new IterativeBigIntFactorialCalculator()),
                 Arguments.of(new IterativeLongFactorialCalculator()),
-                Arguments.of(new IterativeLongFactorialCalculator()),
                 Arguments.of(new RecursiveBigIntFactorialCalculator()),
                 Arguments.of(new RecursiveLongFactorialCalculator()),
                 Arguments.of(new MemoizeFactorialCalculator<>(new RecursiveLongFactorialCalculator())));
