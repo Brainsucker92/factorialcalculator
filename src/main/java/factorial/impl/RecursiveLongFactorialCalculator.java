@@ -4,7 +4,7 @@ import java.util.Map;
 
 import factorial.LongFactorialCalculator;
 
-public class RecursivePrimitiveFactorialCalculator extends LongFactorialCalculator {
+public class RecursiveLongFactorialCalculator extends LongFactorialCalculator {
 
     @Override
     protected Long calculate(Map.Entry<Integer, Long> entry, int n) {

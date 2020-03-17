@@ -6,7 +6,7 @@ import factorial.impl.IterativeBigIntFactorialCalculator;
 import factorial.impl.IterativeLongFactorialCalculator;
 import factorial.impl.MemoizeFactorialCalculator;
 import factorial.impl.RecursiveBigIntFactorialCalculator;
-import factorial.impl.RecursivePrimitiveFactorialCalculator;
+import factorial.impl.RecursiveLongFactorialCalculator;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -25,8 +25,8 @@ public class FactorialCalculatorTest {
                 Arguments.of(new IterativeLongFactorialCalculator()),
                 Arguments.of(new IterativeLongFactorialCalculator()),
                 Arguments.of(new RecursiveBigIntFactorialCalculator()),
-                Arguments.of(new RecursivePrimitiveFactorialCalculator()),
-                Arguments.of(new MemoizeFactorialCalculator<>(new RecursivePrimitiveFactorialCalculator())));
+                Arguments.of(new RecursiveLongFactorialCalculator()),
+                Arguments.of(new MemoizeFactorialCalculator<>(new RecursiveLongFactorialCalculator())));
     }
 
     @ParameterizedTest
