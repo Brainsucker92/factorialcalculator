@@ -31,6 +31,14 @@ public abstract class BasicFactorialCalculator<T extends Number> implements Fact
 
     protected abstract T identity();
 
+    /**
+     * Checks whether the multiplication of {@code prevResult} with {@code n} would overflow the value provided by
+     * {@code getOverflowLimit}
+     *
+     * @param prevResult A result that has been calculated previously
+     * @param n          The value to check whether overflow occurs or not
+     * @return True, if multiplication would overflow the value provided by {@code getOverflowLimit}. False otherwise
+     */
     protected boolean isOverflow(T prevResult, int n) {
         T overflowLimit = getOverflowLimit();
         if (!canOverflow()) {
@@ -39,6 +47,13 @@ public abstract class BasicFactorialCalculator<T extends Number> implements Fact
         return (overflowLimit.longValue() / n) < prevResult.longValue();
     }
 
+    /**
+     * Checks for an occurring overflow and throws an Exception if overflow is detected.
+     *
+     * @param prevResult A previously calculated result
+     * @param n          The value to check overflow with
+     * @throws ArithmeticException If overflow is detected
+     */
     protected final void checkOverflow(T prevResult, int n) {
         if (isOverflow(prevResult, n)) {
             throw new ArithmeticException("Overflow detected for n=" + n);
