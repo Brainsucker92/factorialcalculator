@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FactorialCalculatorTest {
 
-    private static final Number[] factorials = {1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800};
+    private static final Number[] factorials = {1L, 1L, 2L, 6L, 24L, 120L, 720L, 5040L, 40320L, 362880L, 3628800L};
 
     public static Stream<Arguments> provideArguments() {
         return Stream.of(Arguments.of(new GuavaFactorialCalculator()),
@@ -32,7 +32,7 @@ public class FactorialCalculatorTest {
     @MethodSource("provideArguments")
     public void factorialTest(FactorialCalculator<Number> calculator) {
         for (int i = 0; i < factorials.length; i++) {
-            assertEquals(factorials[i], calculator.factorial(i).intValue());
+            assertEquals(factorials[i], calculator.factorial(i).longValue());
         }
     }
 
