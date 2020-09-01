@@ -29,6 +29,13 @@ public abstract class BasicFactorialCalculator<T extends Number> implements Fact
         return getOverflowLimit() != null;
     }
 
+    /**
+     * DO NOT CALL THIS METHOD RECURSIVELY! Call {@link #factorial(Map.Entry, int)} instead.
+     *
+     * @param entry A previously calculated factorial result as key-value-pair.
+     * @param n     The number to calculate factorial form.
+     * @return The result of the factorial calculation.
+     */
     protected abstract T calculate(Map.Entry<Integer, T> entry, int n);
 
     protected abstract T identity();
