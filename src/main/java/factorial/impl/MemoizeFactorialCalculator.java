@@ -28,7 +28,7 @@ public class MemoizeFactorialCalculator<T extends Number> implements FactorialCa
     @Override
     public T factorial(Map.Entry<Integer, T> entry, int n) {
         if (n < 0) {
-            return calculator.factorial(n);
+            throw new IllegalArgumentException("Cannot calculate factorial of negative number");
         }
 
         Integer entryKey = entry.getKey();
@@ -42,6 +42,7 @@ public class MemoizeFactorialCalculator<T extends Number> implements FactorialCa
             return factorialBuffer.get(n);
         }
 
+        // Fill up the buffer until we reached the desired value.
         do {
             // Find current floorEntry:
             Map.Entry<Integer, T> floorEntry = factorialBuffer.floorEntry(n);
