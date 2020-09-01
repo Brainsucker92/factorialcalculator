@@ -10,6 +10,9 @@ public class GuavaFactorialCalculator extends BigIntegerFactorialCalculator {
 
     @Override
     protected BigInteger calculate(Map.Entry<Integer, BigInteger> entry, int n) {
+        if (entry.getKey() == n) {
+            return entry.getValue();
+        }
         return BigIntegerMath.factorial(n);
     }
 }
