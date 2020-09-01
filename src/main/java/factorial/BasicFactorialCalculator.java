@@ -1,7 +1,9 @@
 package factorial;
 
 import java.util.AbstractMap;
+import java.util.Comparator;
 import java.util.Map;
+import java.util.function.BiFunction;
 
 public abstract class BasicFactorialCalculator<T extends Number> implements FactorialCalculator<T> {
     @Override
@@ -33,18 +35,23 @@ public abstract class BasicFactorialCalculator<T extends Number> implements Fact
 
     /**
      * Checks whether the multiplication of {@code prevResult} with {@code n} would overflow the value provided by
-     * {@code getOverflowLimit}
+     * {@link #getOverflowLimit()}
      *
      * @param prevResult A result that has been calculated previously
      * @param n          The value to check whether overflow occurs or not
-     * @return True, if multiplication would overflow the value provided by {@code getOverflowLimit}. False otherwise
+     * @return True, if multiplication would overflow the value provided by {@link #getOverflowLimit()}. False otherwise
      */
     protected boolean isOverflow(T prevResult, int n) {
-        T overflowLimit = getOverflowLimit();
         if (!canOverflow()) {
             return false;
         }
-        return (overflowLimit.longValue() / n) < prevResult.longValue();
+
+        T overflowLimit = getOverflowLimit();
+        BiFunction<T, Integer, T> divisionFunction = getDivisionFunction();
+        T divResult = divisionFunction.apply(overflowLimit, n);
+        Comparator<T> comparator = getComparator();
+        int cmp = comparator.compare(divResult, prevResult);
+        return cmp < 0;
     }
 
     /**
@@ -61,6 +68,10 @@ public abstract class BasicFactorialCalculator<T extends Number> implements Fact
     }
 
     protected abstract T getOverflowLimit();
+
+    protected abstract BiFunction<T, Integer, T> getDivisionFunction();
+
+    protected abstract Comparator<T> getComparator();
 
     private void checkArgument(int n) {
         if (n < 0) {
