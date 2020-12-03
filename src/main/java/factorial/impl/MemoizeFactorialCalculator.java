@@ -42,7 +42,7 @@ public class MemoizeFactorialCalculator<T extends Number> implements FactorialCa
             return factorialBuffer.get(n);
         }
 
-        // Fill up the buffer until we reached the desired value.
+        // Fill up the buffer until we reach the desired value.
         do {
             // Find current floorEntry:
             Map.Entry<Integer, T> floorEntry = factorialBuffer.floorEntry(n);
