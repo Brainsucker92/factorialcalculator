@@ -22,7 +22,6 @@ public abstract class BasicFactorialCalculator<T extends Number> implements Fact
         if (isReusable(entry, n)) {
             return entry.getValue();
         }
-        checkOverflow(entry.getValue(), n);
         return calculate(entry, n);
     }
 
@@ -50,6 +49,10 @@ public abstract class BasicFactorialCalculator<T extends Number> implements Fact
      * @return True, if multiplication would overflow the value provided by {@link #getOverflowLimit()}. False otherwise
      */
     protected boolean isOverflow(T prevResult, int n) {
+        if (!canOverflow()) {
+            return false;
+        }
+
         T overflowLimit = getOverflowLimit();
         BiFunction<T, Integer, T> divisionFunction = getDivisionFunction();
         T divResult = divisionFunction.apply(overflowLimit, n);
@@ -65,11 +68,9 @@ public abstract class BasicFactorialCalculator<T extends Number> implements Fact
      * @param n          The value to check overflow with
      * @throws ArithmeticException If overflow is detected
      */
-    private void checkOverflow(T prevResult, int n) {
-        if (canOverflow()) {
-            if (isOverflow(prevResult, n)) {
-                throw new ArithmeticException("Overflow detected for n=" + n);
-            }
+    protected final void checkOverflow(T prevResult, int n) {
+        if (isOverflow(prevResult, n)) {
+            throw new ArithmeticException("Overflow detected for n=" + n);
         }
     }
 

@@ -12,7 +12,11 @@ public class IterativeLongFactorialCalculator extends LongFactorialCalculator {
         Integer key = entry.getKey();
         Long value = entry.getValue();
         Long prevResult = LongStream.rangeClosed(key + 1, n)
-                                    .reduce(identity(), (x, y) -> x * y);
+                                    .reduce(identity(), (x, y) -> {
+                                        checkOverflow(x, ((int) y));
+                                        return x * y;
+                                    });
+        checkOverflow(prevResult, key);
         return value * prevResult;
     }
 }
