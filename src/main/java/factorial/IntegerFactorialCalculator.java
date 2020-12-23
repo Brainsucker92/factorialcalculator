@@ -5,9 +5,4 @@ public abstract class IntegerFactorialCalculator extends BasicFactorialCalculato
     protected Integer identity() {
         return 1;
     }
-
-    @Override
-    protected final Integer getOverflowLimit() {
-        return Integer.MAX_VALUE;
-    }
 }

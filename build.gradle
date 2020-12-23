@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.github.brainsucker92'
-version '0.0.1'
+version '0.0.2-alpha'
 
 sourceCompatibility = 1.8
 
@@ -18,7 +18,7 @@ test {
 }
 
 dependencies {
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.6.2'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.7.0'
 
     // https://mvnrepository.com/artifact/com.google.guava/guava
     implementation group: 'com.google.guava', name: 'guava', version: '29.0-jre'

@@ -4,10 +4,9 @@ import factorial.FactorialCalculator;
 import factorial.impl.GuavaFactorialCalculator;
 import factorial.impl.IterativeBigIntFactorialCalculator;
 import factorial.impl.IterativeLongFactorialCalculator;
-import factorial.impl.MemoizeFactorialCalculator;
+import factorial.impl.MemoizedFactorialCalculator;
 import factorial.impl.RecursiveBigIntFactorialCalculator;
 import factorial.impl.RecursiveLongFactorialCalculator;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -25,14 +24,14 @@ public class FactorialCalculatorTest {
                 Arguments.of(new IterativeLongFactorialCalculator()),
                 Arguments.of(new RecursiveBigIntFactorialCalculator()),
                 Arguments.of(new RecursiveLongFactorialCalculator()),
-                Arguments.of(new MemoizeFactorialCalculator<>(new RecursiveLongFactorialCalculator())));
+                Arguments.of(new MemoizedFactorialCalculator<>(new RecursiveLongFactorialCalculator())));
     }
 
     @ParameterizedTest
     @MethodSource("provideArguments")
     public void factorialTest(FactorialCalculator<Number> calculator) {
         for (int i = 0; i < factorials.length; i++) {
-            assertEquals(factorials[i], calculator.factorial(i).longValue());
+            assertEquals(factorials[i].longValue(), calculator.factorial(i).longValue());
         }
     }
 
@@ -40,10 +39,5 @@ public class FactorialCalculatorTest {
     @MethodSource("provideArguments")
     public void test_negative(FactorialCalculator<Number> calculator) {
         assertThrows(IllegalArgumentException.class, () -> calculator.factorial(-1));
-    }
-
-    @Disabled
-    public void test_overflow(FactorialCalculator<Integer> calculator) {
-        // TODO
     }
 }

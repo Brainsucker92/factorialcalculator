@@ -7,13 +7,13 @@ import java.util.TreeMap;
 
 import factorial.FactorialCalculator;
 
-public class MemoizeFactorialCalculator<T extends Number> implements FactorialCalculator<T> {
+public class MemoizedFactorialCalculator<T extends Number> implements FactorialCalculator<T> {
 
     private final FactorialCalculator<T> calculator;
 
     private final TreeMap<Integer, T> factorialBuffer = new TreeMap<>(Comparator.naturalOrder());
 
-    public MemoizeFactorialCalculator(FactorialCalculator<T> calculator) {
+    public MemoizedFactorialCalculator(FactorialCalculator<T> calculator) {
         this.calculator = calculator;
     }
 
