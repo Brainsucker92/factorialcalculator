@@ -1,8 +1,13 @@
 package factorial;
 
+import factorial.tools.ArithmeticOperations;
+import factorial.tools.impl.LongArithmeticOperations;
+
 public abstract class LongFactorialCalculator extends BasicFactorialCalculator<Long> {
-    @Override
-    protected Long identity() {
-        return 1L;
+
+    private static final ArithmeticOperations<Long> LONG_ARITHMETIC_OPERATIONS = new LongArithmeticOperations();
+
+    public LongFactorialCalculator() {
+        super(LONG_ARITHMETIC_OPERATIONS);
     }
 }

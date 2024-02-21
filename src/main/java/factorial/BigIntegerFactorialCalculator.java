@@ -1,10 +1,15 @@
 package factorial;
 
+import factorial.tools.ArithmeticOperations;
+import factorial.tools.impl.BigIntegerArithmeticOperations;
+
 import java.math.BigInteger;
 
 public abstract class BigIntegerFactorialCalculator extends BasicFactorialCalculator<BigInteger> {
-    @Override
-    protected BigInteger identity() {
-        return BigInteger.ONE;
+
+    private static final ArithmeticOperations<BigInteger> BIG_INTEGER_ARITHMETIC_OPERATIONS = new BigIntegerArithmeticOperations();
+
+    public BigIntegerFactorialCalculator() {
+        super(BIG_INTEGER_ARITHMETIC_OPERATIONS);
     }
 }

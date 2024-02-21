@@ -1,20 +1,15 @@
 package factorial.impl;
 
+import factorial.tools.ArithmeticOperations;
+import factorial.tools.impl.BigIntegerArithmeticOperations;
+
 import java.math.BigInteger;
-import java.util.Map;
-import java.util.stream.IntStream;
 
-import factorial.BigIntegerFactorialCalculator;
+public class IterativeBigIntFactorialCalculator extends IterativeFactorialCalculator<BigInteger> {
 
-public class IterativeBigIntFactorialCalculator extends BigIntegerFactorialCalculator {
+    private static final ArithmeticOperations<BigInteger> operations = new BigIntegerArithmeticOperations();
 
-    @Override
-    public BigInteger calculate(Map.Entry<Integer, BigInteger> entry, int n) {
-        Integer key = entry.getKey();
-        BigInteger value = entry.getValue();
-
-        return value.multiply(IntStream.rangeClosed(key + 1, n)
-                                       .mapToObj(BigInteger::valueOf)
-                                       .reduce(identity(), BigInteger::multiply));
+    public IterativeBigIntFactorialCalculator() {
+        super(operations);
     }
 }

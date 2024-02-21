@@ -1,14 +1,15 @@
 package factorial.impl;
 
+import factorial.tools.ArithmeticOperations;
+import factorial.tools.impl.BigIntegerArithmeticOperations;
+
 import java.math.BigInteger;
-import java.util.Map;
 
-import factorial.BigIntegerFactorialCalculator;
+public class RecursiveBigIntFactorialCalculator extends RecursiveFactorialCalculator<BigInteger> {
 
-public class RecursiveBigIntFactorialCalculator extends BigIntegerFactorialCalculator {
+    private static final ArithmeticOperations<BigInteger> operations = new BigIntegerArithmeticOperations();
 
-    @Override
-    public BigInteger calculate(Map.Entry<Integer, BigInteger> entry, int n) {
-        return BigInteger.valueOf(n).multiply(factorial(entry, n - 1));
+    public RecursiveBigIntFactorialCalculator() {
+        super(operations);
     }
 }

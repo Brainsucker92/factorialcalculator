@@ -1,12 +1,21 @@
 package factorial;
 
+import factorial.tools.ArithmeticOperations;
+
 import java.util.AbstractMap;
 import java.util.Map;
 
 public abstract class BasicFactorialCalculator<T extends Number> implements FactorialCalculator<T> {
+
+    protected ArithmeticOperations<T> operations;
+
+    public BasicFactorialCalculator(ArithmeticOperations<T> operations) {
+        this.operations = operations;
+    }
+
     @Override
     public T factorial(int n) {
-        Map.Entry<Integer, T> entry = new AbstractMap.SimpleEntry<>(1, identity());
+        Map.Entry<Integer, T> entry = new AbstractMap.SimpleEntry<>(1, operations.identity());
         return factorial(entry, n);
     }
 
@@ -15,9 +24,9 @@ public abstract class BasicFactorialCalculator<T extends Number> implements Fact
         checkArgument(n);
         // 0 <= n
         if (n < 2) {
-            return identity();
+            return operations.identity();
         }
-        if (isReusable(entry, n)) {
+        if (n == entry.getKey()) {
             return entry.getValue();
         }
         return calculate(entry, n);
@@ -32,15 +41,9 @@ public abstract class BasicFactorialCalculator<T extends Number> implements Fact
      */
     protected abstract T calculate(Map.Entry<Integer, T> entry, int n);
 
-    protected abstract T identity();
-
     private void checkArgument(int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Cannot calculate factorial of negative numbers.");
         }
-    }
-
-    private boolean isReusable(Map.Entry<Integer, T> entry, int n) {
-        return n == entry.getKey();
     }
 }
